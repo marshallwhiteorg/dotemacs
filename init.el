@@ -43,6 +43,9 @@
 ;; No hard tabs
 (customize-set-variable 'indent-tabs-mode nil)
 
+;; Always enable whitespace mode
+(global-whitespace-mode t)
+
 ;; Aspell for spell checking
 (setq ispell-program-name "aspell")
 (setq ispell-list-command "--list")
@@ -113,8 +116,8 @@
 ;;(use-package cyberpunk-theme
 (use-package nord-theme
   :ensure t
-	     :config
-	     (variable-pitch-mode 0))
+  :config
+  (variable-pitch-mode 0))
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -182,7 +185,10 @@
 ;; On the fly syntax checking
 (use-package flycheck
   :ensure t
-  :init (global-flycheck-mode))
+  :init (global-flycheck-mode)
+  (add-hook
+   'c++-mode-hook
+   (lambda () (setq flycheck-clang-language-standard "c++17"))))
 
 ;; Racket configurations
 (use-package racket-mode
@@ -204,8 +210,12 @@
  '(line-spacing 0.2)
  '(package-selected-packages
    (quote
-    (racket-mode flycheck python-docstring mentor org-pomodoro conda ein cyberpunk-theme poet-dark-monochrome-theme poet-dark-theme winum org-bullets helm-swoop helm use-package)))
- '(safe-local-variable-values (quote ((TeX-engine . xetex)))))
+    (flycheck python-docstring mentor org-pomodoro conda ein cyberpunk-theme poet-dark-monochrome-theme poet-dark-theme winum org-bullets helm-swoop helm use-package)))
+ '(safe-local-variable-values (quote ((TeX-engine . xetex))))
+ '(whitespace-line-column 70)
+ '(whitespace-style
+   (quote
+    (face trailing tabs spaces lines newline empty indentation space-after-tab space-before-tab tab-mark))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
