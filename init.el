@@ -46,11 +46,11 @@
 (customize-set-variable 'indent-tabs-mode nil)
 
 ;; Enables whitespace-mode for programming-related major modes.
-(setq whitespace-global-modes nil)
 (define-global-minor-mode prog-global-whitespace-mode whitespace-mode
   (lambda ()
     (when (derived-mode-p 'prog-mode)
-        (whitespace-mode t))))
+      (whitespace-mode t))))
+(setq whitespace-global-modes nil)
 (prog-global-whitespace-mode 1)
 
 
