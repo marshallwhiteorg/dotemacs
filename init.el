@@ -23,30 +23,38 @@
 (eval-when-compile
   (require 'use-package))
 
+;; Helm allows better completions.
 (use-package helm
   :ensure t
-  :bind (("M-a" . helm-M-x)
+  :bind (("M-x" . helm-M-x)
          ("C-x C-f" . helm-find-files))
   :config (progn
-	    (setq helm-buffers-fuzzy-matching t)
+            (setq helm-buffers-fuzzy-matching t)
             (setq helm-mode-fuzzy-match t)
             (setq helm-completion-in-region-fuzzy-match t)
             (helm-mode 1)))
 
+;; Helm-swoop allows better searching.
 (use-package helm-swoop
   :ensure t
   :bind (("C-s" . helm-swoop)))
 
-;; C-k to remove line
+;; Allows C-k to remove a line.
 (customize-set-variable 'kill-whole-line t)
 
-;; No hard tabs
+;; Disables hard tabs.
 (customize-set-variable 'indent-tabs-mode nil)
 
-;; Always enable whitespace mode
-(global-whitespace-mode t)
+;; Enables whitespace-mode for programming-related major modes.
+(setq whitespace-global-modes nil)
+(define-global-minor-mode prog-global-whitespace-mode whitespace-mode
+  (lambda ()
+    (when (derived-mode-p 'prog-mode)
+        (whitespace-mode t))))
+(prog-global-whitespace-mode 1)
 
-;; Aspell for spell checking
+
+;; Use aspell for spell checking.
 (setq ispell-program-name "aspell")
 (setq ispell-list-command "--list")
 
