@@ -202,6 +202,9 @@
 (use-package racket-mode
   :ensure t)
 
+;; C++ configurations
+(setq c-basic-offset 4
+      c-default-style "stroustrup") ; style from his book
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
