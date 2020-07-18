@@ -46,12 +46,12 @@
 (customize-set-variable 'indent-tabs-mode nil)
 
 ;; Enables whitespace-mode for programming-related major modes.
-(define-global-minor-mode prog-global-whitespace-mode whitespace-mode
-  (lambda ()
-    (when (derived-mode-p 'prog-mode)
-      (whitespace-mode t))))
-(setq whitespace-global-modes nil)
-(prog-global-whitespace-mode 1)
+;(define-global-minor-mode prog-global-whitespace-mode whitespace-mode
+;  (lambda ()
+;    (when (derived-mode-p 'prog-mode)
+;      (whitespace-mode))))
+;(setq whitespace-global-modes nil)
+;(prog-global-whitespace-mode 1)
 
 
 ;; Use aspell for spell checking.
@@ -121,8 +121,8 @@
 (set-face-attribute 'fixed-pitch nil :family "Iosevka")
 (set-face-attribute 'variable-pitch nil :family "Baskerville")
 ;;(use-package poet-dark-monochrome-theme
-;;(use-package cyberpunk-theme
-(use-package nord-theme
+;;(use-package nord-theme
+(use-package cyberpunk-theme
   :ensure t
   :config
   (variable-pitch-mode 0))
@@ -225,19 +225,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(backup-directory-alist (quote (("." . "~/.emacs.d/backups"))))
- '(c-basic-offset 4)
  '(custom-safe-themes
    (quote
     ("1119fc59c71d953f66e1b24889886f91ead269831f3e0562cd64b1781cc125c8" "82358261c32ebedfee2ca0f87299f74008a2e5ba5c502bde7aaa15db20ee3731" "6bc387a588201caf31151205e4e468f382ecc0b888bac98b2b525006f7cb3307" default)))
  '(indent-tabs-mode nil)
  '(initial-buffer-choice "~/files/pictures/mwhite_pixel.png")
- '(kill-whole-line t)
  '(line-spacing 0.2)
- '(package-selected-packages
-   (quote
-    (helm-projectile projectile flycheck python-docstring mentor org-pomodoro conda ein cyberpunk-theme poet-dark-monochrome-theme poet-dark-theme winum org-bullets helm-swoop helm use-package)))
  '(safe-local-variable-values (quote ((TeX-engine . xetex))))
- '(whitespace-global-modes nil)
  '(whitespace-line-column 80)
  '(whitespace-style
    (quote
