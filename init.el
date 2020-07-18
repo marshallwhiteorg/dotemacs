@@ -165,6 +165,11 @@
   (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   (projectile-mode 1))
 
+;; Uses Helm utilities for projectile
+(use-package helm-projectile
+  :ensure t
+  :config
+  (helm-projectile-on))
 
 
 ;; Shell
@@ -230,7 +235,7 @@
  '(line-spacing 0.2)
  '(package-selected-packages
    (quote
-    (projectile flycheck python-docstring mentor org-pomodoro conda ein cyberpunk-theme poet-dark-monochrome-theme poet-dark-theme winum org-bullets helm-swoop helm use-package)))
+    (helm-projectile projectile flycheck python-docstring mentor org-pomodoro conda ein cyberpunk-theme poet-dark-monochrome-theme poet-dark-theme winum org-bullets helm-swoop helm use-package)))
  '(safe-local-variable-values (quote ((TeX-engine . xetex))))
  '(whitespace-global-modes nil)
  '(whitespace-line-column 80)
