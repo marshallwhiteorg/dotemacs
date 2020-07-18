@@ -157,6 +157,15 @@
       python-shell-interpreter-args "console --simple-prompt"
       python-shell-prompt-detect-failure-warning nil)
 
+;; Allows easier interaction with projects
+(use-package projectile
+  :ensure t
+  :config
+  (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  (projectile-mode 1))
+
+
 
 ;; Shell
 (use-package shell-switcher
@@ -188,9 +197,8 @@
   (conda-env-initialize-eshell))
 
 
-;; Programming tools -----
-
-;; On the fly syntax checking
+;; C++ ----
+;; Adds on the fly syntax checking
 (use-package flycheck
   :ensure t
   :init (global-flycheck-mode)
@@ -198,13 +206,14 @@
    'c++-mode-hook
    (lambda () (setq flycheck-clang-language-standard "c++17"))))
 
-;; Racket configurations
+;; Improves C++ code style
+(setq c-basic-offset 4
+      c-default-style "stroustrup") ; style from his book
+
+;; Racket ----
 (use-package racket-mode
   :ensure t)
 
-;; C++ configurations
-(setq c-basic-offset 4
-      c-default-style "stroustrup") ; style from his book
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -221,9 +230,10 @@
  '(line-spacing 0.2)
  '(package-selected-packages
    (quote
-    (flycheck python-docstring mentor org-pomodoro conda ein cyberpunk-theme poet-dark-monochrome-theme poet-dark-theme winum org-bullets helm-swoop helm use-package)))
+    (projectile flycheck python-docstring mentor org-pomodoro conda ein cyberpunk-theme poet-dark-monochrome-theme poet-dark-theme winum org-bullets helm-swoop helm use-package)))
  '(safe-local-variable-values (quote ((TeX-engine . xetex))))
- '(whitespace-line-column 70)
+ '(whitespace-global-modes nil)
+ '(whitespace-line-column 80)
  '(whitespace-style
    (quote
     (face trailing tabs spaces lines newline empty indentation space-after-tab space-before-tab tab-mark))))
