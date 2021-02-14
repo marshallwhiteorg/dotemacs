@@ -7,10 +7,6 @@
 (setq package-enable-at-startup nil)
 (package-initialize)
 
-;; Personal info
-(setq user-full-name "Marshall White"
-      user-mail-address "m@marshallwhite.org")
-
 ;; key bindings
 (when (eq system-type 'darwin) ;; mac specific settings
   (setq mac-option-modifier 'meta))
